@@ -106,3 +106,20 @@ def results():
     '''
     Body of the game.
     '''
+    possible_answers = []
+    while not possible_answers:
+        grid = generate_grid()
+        possible_answers = get_words('en.txt', [[element for element in row] for row in grid])
+    print(grid)
+    user_words = get_user_words()
+    pure_words = get_pure_user_words(user_words,grid,possible_answers)
+    num_guessed_words = 0
+    guessed_words = []
+    for word in user_words:
+        if check_requirements(word,grid) and (word not in guessed_words):
+            if word in possible_answers:
+                possible_answers.remove(word)
+            guessed_words.append(word)
+            num_guessed_words += 1
+
+    return num_guessed_words, possible_answers, pure_words
