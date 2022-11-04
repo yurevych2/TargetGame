@@ -2,7 +2,8 @@
 Nice game for people 6-106 y.o.
 '''
 from typing import List
-from random import randint
+from random import choice
+from string import ascii_lowercase
 
 def get_num_of_letters(word):
     '''
@@ -43,6 +44,10 @@ def generate_grid() -> List[List[str]]:
     Generates list of lists of letters - i.e. grid for the game.
     e.g. [['I', 'G', 'E'], ['P', 'I', 'S'], ['W', 'M', 'G']]
     '''
+    length = 3
+    grid = [[choice(ascii_lowercase) for _ in range(length)] for _ in range(length)]
+    
+    return grid
 
 
 def get_words(path: str, letters: List[str]) -> List[str]:
