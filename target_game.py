@@ -94,6 +94,12 @@ def get_pure_user_words(user_words: List[str], letters: List[str],\
     Checks user words with the rules and returns list of those words
     that are not in dictionary.
     '''
+    pure_user_words = []
+    for word in user_words:
+        if check_requirements(word, letters) and word not in words_from_dict:
+            pure_user_words.append(word)
+
+    return pure_user_words
 
 
 def results():
