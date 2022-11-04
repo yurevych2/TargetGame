@@ -54,6 +54,18 @@ def get_words(path: str, letters: List[str]) -> List[str]:
     '''
     Reads the file f. Checks the words with rules and returns a list of words.
     '''
+    with open(path, 'r')as file:
+        file.readline()
+        file.readline()
+        file.readline()
+        words = file.readlines()
+    answers = []
+    for word in words:
+        word = word.strip().lower()
+        if check_requirements(word, letters):
+            answers.append(word)
+            
+    return answers
 
 
 def get_user_words() -> List[str]:
