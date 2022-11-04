@@ -64,7 +64,7 @@ def get_words(path: str, letters: List[str]) -> List[str]:
         word = word.strip().lower()
         if check_requirements(word, letters):
             answers.append(word)
-            
+
     return answers
 
 
@@ -75,6 +75,15 @@ def get_user_words() -> List[str]:
     for Windows.
     Note: the user presses the enter key after entering each word.
     '''
+    user_words = []
+    while True:
+        try:
+            word = input('>>> ')
+            user_words.append(word)
+        except EOFError:
+            break
+
+    return user_words
 
 
 def get_pure_user_words(user_words: List[str], letters: List[str],\
